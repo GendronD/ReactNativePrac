@@ -22,6 +22,7 @@
    - Dynamic Linking
    - Middleware for Authorization/Authentication
 - Implement Language Localization
+- Implement Logger
 - Implement Theme Class
    - Color Palette
       - Primary

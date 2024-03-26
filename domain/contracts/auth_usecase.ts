@@ -1,7 +1,7 @@
 import {Credentials} from '../models';
 
-export interface AuthRepository {
+export interface AuthUseCase {
   login(credentials: Credentials): Promise<void>;
 }
 
-export default AuthRepository;
+export default AuthUseCase;

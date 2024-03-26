@@ -8,6 +8,10 @@ export class Credentials {
     this.email = email;
     this.password = password;
   }
+
+  isValid(): boolean {
+    return this.email.validate() && this.password.validate();
+  }
 }
 
 export default Credentials;

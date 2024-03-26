@@ -1,24 +1,25 @@
-import {Credentials, Email, Password} from '../../../domain';
+import {AuthUseCase, Credentials, Email, Password} from '../../../domain';
 
 class LoginViewModel {
+  private authUseCase: AuthUseCase;
   credentials: Credentials;
 
-  constructor() {
+  constructor(authUseCase: AuthUseCase) {
+    this.authUseCase = authUseCase;
     this.credentials = new Credentials(new Email(''), new Password(''));
   }
 
-  login(): void {
-    setTimeout(() => {
-      const isValid =
-        this.credentials.email.validate() &&
-        this.credentials.password.validate();
-
-      if (isValid) {
+  async login(): Promise<void> {
+    try {
+      if (this.credentials.isValid()) {
+        await this.authUseCase.login(this.credentials);
+        // Show Success Snackbar to UI
         console.log('login successs');
       } else {
+        // Show Failure Snackbar to UI
         console.log('login failure');
       }
-    }, 2000); // Simulates Network Delay
+    } catch (error) {}
   }
 }
 
