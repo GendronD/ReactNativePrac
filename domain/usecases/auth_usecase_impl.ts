@@ -1,4 +1,4 @@
-import {Credentials} from '../models';
+import {User, Credentials} from '../models';
 import {AuthUseCase, AuthRepository} from '../contracts';
 
 export class AuthUseCaseImpl implements AuthUseCase {
@@ -8,7 +8,7 @@ export class AuthUseCaseImpl implements AuthUseCase {
     this.authRepository = authRepository;
   }
 
-  async login(credentials: Credentials): Promise<void> {
+  async login(credentials: Credentials): Promise<User> {
     try {
       return await this.authRepository.login(credentials);
     } catch (error) {

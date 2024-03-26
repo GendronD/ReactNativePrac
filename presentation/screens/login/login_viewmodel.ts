@@ -12,7 +12,8 @@ class LoginViewModel {
   async login(): Promise<void> {
     try {
       if (this.credentials.isValid()) {
-        await this.authUseCase.login(this.credentials);
+        const user = await this.authUseCase.login(this.credentials);
+        console.log(user);
         // Show Success Snackbar to UI
         console.log('login successs');
       } else {

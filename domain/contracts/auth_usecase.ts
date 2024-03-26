@@ -1,7 +1,7 @@
-import {Credentials} from '../models';
+import {User, Credentials} from '../models';
 
 export interface AuthUseCase {
-  login(credentials: Credentials): Promise<void>;
+  login(credentials: Credentials): Promise<User>;
 }
 
 export default AuthUseCase;
