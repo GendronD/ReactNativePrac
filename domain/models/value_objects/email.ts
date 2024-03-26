@@ -4,6 +4,10 @@ export class Email {
   constructor(value: string) {
     this.value = value;
   }
+
+  validate(): boolean {
+    return true;
+  }
 }
 
 export default Email;
