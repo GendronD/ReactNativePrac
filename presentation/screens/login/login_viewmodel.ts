@@ -1,7 +1,7 @@
 import {AuthUseCase, Credentials, Email, Password} from '../../../domain';
 import {store, setUser} from '../../../domain';
 
-class LoginViewModel {
+export class LoginViewModel {
   private authUseCase: AuthUseCase;
   credentials: Credentials;
 
