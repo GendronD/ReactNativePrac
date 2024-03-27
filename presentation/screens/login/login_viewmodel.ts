@@ -1,4 +1,5 @@
 import {AuthUseCase, Credentials, Email, Password} from '../../../domain';
+import {store, setUser} from '../../../domain';
 
 class LoginViewModel {
   private authUseCase: AuthUseCase;
@@ -13,7 +14,7 @@ class LoginViewModel {
     try {
       if (this.credentials.isValid()) {
         const user = await this.authUseCase.login(this.credentials);
-        console.log(user);
+        store.dispatch(setUser(user));
         // Show Success Snackbar to UI
         console.log('login successs');
       } else {
