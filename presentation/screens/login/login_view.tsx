@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import '../../../resources';
 import {LoginViewModel} from './login_viewmodel';
 import {AuthUseCaseImpl} from '../../../domain';
 import {AuthRepositoryImpl} from '../../../data';
+import {ActionButton} from '../../components';
+import {primaryButtonStyle} from '../../../resources';
 
 const LoginView: React.FC = () => {
   const authRepository = new AuthRepositoryImpl();
@@ -12,14 +13,15 @@ const LoginView: React.FC = () => {
   const loginViewModel = new LoginViewModel(authUseCase);
   const {t} = useTranslation();
 
-  useEffect(() => {
-    loginViewModel.login();
-  });
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('greeting')}</Text>
       <Text>{t('welcome')}</Text>
+      <ActionButton
+        label="Login"
+        onPress={() => loginViewModel.login()}
+        buttonStyle={primaryButtonStyle.container}
+      />
     </View>
   );
 };
