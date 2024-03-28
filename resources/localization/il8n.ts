@@ -1,18 +1,14 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
-// import {Localization} from 'expo-localization';
+import 'intl-pluralrules';
 
-// const languageDetector = {
-//   type: 'languageDetector',
-//   async: true, // flags below detection to be async
-//   detect: callback => {
-//     return /*'en'; */ Localization.getLocalizationAsync().then(({locale}) => {
-//       callback(locale);
-//     });
-//   },
-//   init: () => {},
-//   cacheUserLanguage: () => {},
-// };
+// Translations
+import translationEnglish from './locales/en/translation.json';
+const resources = {
+  en: {
+    translation: translationEnglish,
+  },
+};
 
 i18n
   // .use(languageDetector)
@@ -24,9 +20,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    backend: {
-      loadPath: './locales/{{lng}}/translation.json',
-    },
+    resources,
   });
 
 export default i18n;

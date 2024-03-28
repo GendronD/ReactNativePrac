@@ -6,6 +6,8 @@ import {AuthUseCaseImpl} from '../../../domain';
 import {AuthRepositoryImpl} from '../../../data';
 import {ActionButton} from '../../components';
 import {primaryButtonStyle} from '../../../resources';
+import 'intl-pluralrules';
+import '../../../resources/localization/il8n';
 
 const LoginView: React.FC = () => {
   const authRepository = new AuthRepositoryImpl();
@@ -15,10 +17,10 @@ const LoginView: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('greeting')}</Text>
+      <Text style={styles.title}>{t('login.title')}</Text>
       <Text>{t('welcome')}</Text>
       <ActionButton
-        label="Login"
+        label={t('login.login_button_label')}
         onPress={() => loginViewModel.login()}
         buttonStyle={primaryButtonStyle.container}
       />

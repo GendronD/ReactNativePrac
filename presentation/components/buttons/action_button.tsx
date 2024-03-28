@@ -31,7 +31,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
 
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text>{label}</Text>
+      <Text style={buttonStyle}>{label}</Text>
     </TouchableOpacity>
   );
 };
