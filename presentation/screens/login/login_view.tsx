@@ -5,8 +5,7 @@ import {LoginViewModel} from './login_viewmodel';
 import {AuthUseCaseImpl} from '../../../domain';
 import {AuthRepositoryImpl} from '../../../data';
 import {ActionButton} from '../../components';
-import {primaryButtonStyle} from '../../../resources';
-import 'intl-pluralrules';
+import {primaryButtonStyle, secondaryButtonStyle} from '../../../resources';
 import '../../../resources/localization/il8n';
 
 const LoginView: React.FC = () => {
@@ -18,11 +17,19 @@ const LoginView: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('login.title')}</Text>
-      <Text>{t('welcome')}</Text>
+      <View style={styles.spacer} />
       <ActionButton
         label={t('login.login_button_label')}
         onPress={() => loginViewModel.login()}
-        buttonStyle={primaryButtonStyle.container}
+        buttonStyle={primaryButtonStyle.button}
+        labelStyle={primaryButtonStyle.label}
+      />
+      <View style={styles.spacer} />
+      <ActionButton
+        label={t('login.sign_up_button_label')}
+        onPress={() => loginViewModel.login()}
+        buttonStyle={secondaryButtonStyle.button}
+        labelStyle={secondaryButtonStyle.label}
       />
     </View>
   );
@@ -38,6 +45,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+  },
+  spacer: {
+    height: 20,
+    backgroundColor: 'transparent',
   },
 });
 

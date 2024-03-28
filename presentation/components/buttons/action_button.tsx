@@ -4,37 +4,31 @@ import {
   Text,
   StyleProp,
   ViewStyle,
-  // StyleSheet,
-  // TextStyle,
+  TextStyle,
 } from 'react-native';
 
 interface ActionButtonProps {
   label: string;
   onPress: () => void;
   buttonStyle?: StyleProp<ViewStyle>;
-  // labelStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
   label,
   onPress,
   buttonStyle,
-  // labelStyle,
+  labelStyle,
 }) => {
-  if (!buttonStyle) {
+  if (!buttonStyle && !labelStyle) {
     return;
   }
 
-  //   const styles = StyleSheet.create({
-  //     button: buttonStyle!,
-  //   });
-
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text style={buttonStyle}>{label}</Text>
+      <Text style={labelStyle}>{label}</Text>
     </TouchableOpacity>
   );
 };
 
 export default ActionButton;
-// style={[labelStyle]}

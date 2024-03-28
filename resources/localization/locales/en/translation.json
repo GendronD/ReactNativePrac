@@ -1,6 +1,7 @@
 {
     "login": {
         "title": "Practice App",
-        "login_button_label": "Login"
+        "login_button_label": "Login",
+        "sign_up_button_label": "Sign Up"
     }
 }
