@@ -18,6 +18,15 @@ export const LoginView: React.FC<LoginViewProps> = props => {
   const loginViewModel = new LoginViewModel(authUseCase);
   const {t} = useTranslation();
 
+  const loginPressed = async () => {
+    try {
+      await loginViewModel.login();
+      props.navigation.navigate('Home');
+    } catch {
+      return;
+    }
+  };
+
   function toSignUp() {
     props.navigation.navigate('SignUp');
   }
@@ -29,7 +38,7 @@ export const LoginView: React.FC<LoginViewProps> = props => {
       <View style={styles.spacer} />
       <ActionButton
         label={t('login.login_button_label')}
-        onPress={() => loginViewModel.login()}
+        onPress={loginPressed}
         buttonStyle={primaryButtonStyle.button}
         labelStyle={primaryButtonStyle.label}
       />

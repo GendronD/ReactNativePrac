@@ -16,5 +16,12 @@
         "description": "Sign Up for Practice App",
         "login_button_label": "To Login",
         "sign_up_button_label": "Sign Up"
+    },
+    "home": {
+        "title": "Home"
+    },
+    "toasts": {
+        "login_success": "Login Successul",
+        "login_failure": "Login Failed"
     }
 }

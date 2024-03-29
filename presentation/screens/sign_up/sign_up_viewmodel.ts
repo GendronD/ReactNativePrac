@@ -23,10 +23,15 @@ export class SignUpViewModel {
       } else {
         Toast.show({
           type: 'error',
-          text1: 'Sign Up Failed',
+          text1: 'Sign Up Credentials Not Valid',
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Sign Up Failed',
+      });
+    }
   }
 }
 

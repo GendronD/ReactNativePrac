@@ -23,10 +23,16 @@ export class LoginViewModel {
       } else {
         Toast.show({
           type: 'error',
-          text1: 'Login Failed',
+          text1: 'Login Credentials Not Valid',
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Login Failed',
+      });
+      throw error;
+    }
   }
 }
 

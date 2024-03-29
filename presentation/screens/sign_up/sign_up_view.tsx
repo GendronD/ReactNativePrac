@@ -18,6 +18,15 @@ export const SignUpView: React.FC<SignUpViewProps> = props => {
   const signUpViewModel = new SignUpViewModel(authUseCase);
   const {t} = useTranslation();
 
+  const signUpPressed = async () => {
+    try {
+      await signUpViewModel.signUp();
+      props.navigation.navigate('Home');
+    } catch {
+      return;
+    }
+  };
+
   function toLogin() {
     props.navigation.navigate('Login');
   }
@@ -29,7 +38,7 @@ export const SignUpView: React.FC<SignUpViewProps> = props => {
       <View style={styles.spacer} />
       <ActionButton
         label={t('sign_up.sign_up_button_label')}
-        onPress={() => signUpViewModel.signUp()}
+        onPress={signUpPressed}
         buttonStyle={primaryButtonStyle.button}
         labelStyle={primaryButtonStyle.label}
       />

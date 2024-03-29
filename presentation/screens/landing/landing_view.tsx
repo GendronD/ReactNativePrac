@@ -6,13 +6,11 @@ import {primaryButtonStyle, secondaryButtonStyle} from '../../../resources';
 import '../../../resources/localization/il8n';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import RootStackParamList from '../../../screen_types';
-// import {useNavigation} from '@react-navigation/native';
 
 type LandingViewProps = NativeStackScreenProps<RootStackParamList, 'Landing'>;
 
 export const LandingView: React.FC<LandingViewProps> = props => {
   const {t} = useTranslation();
-  // const navigation = useNavigation();
 
   function toLogin() {
     props.navigation.navigate('Login');
