@@ -1,51 +1,39 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {SignUpViewModel} from './sign_up_viewmodel';
-import {AuthUseCaseImpl} from '../../../domain';
-import {AuthRepositoryImpl} from '../../../data';
 import {ActionButton} from '../../components';
 import {primaryButtonStyle, secondaryButtonStyle} from '../../../resources';
 import '../../../resources/localization/il8n';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import RootStackParamList from '../../../screen_types';
 
-type SignUpViewProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
+type LandingViewProps = NativeStackScreenProps<RootStackParamList, 'Landing'>;
 
-export const SignUpView: React.FC<SignUpViewProps> = props => {
-  const authRepository = new AuthRepositoryImpl();
-  const authUseCase = new AuthUseCaseImpl(authRepository);
-  const signUpViewModel = new SignUpViewModel(authUseCase);
+export const LandingView: React.FC<LandingViewProps> = props => {
   const {t} = useTranslation();
-
-  const signUpPressed = async () => {
-    try {
-      await signUpViewModel.signUp();
-      props.navigation.navigate('Dashboard');
-    } catch {
-      return;
-    }
-  };
 
   function toLogin() {
     props.navigation.navigate('Login');
   }
+  function toSignUp() {
+    props.navigation.navigate('SignUp');
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('sign_up.title')}</Text>
-      <Text style={styles.body}>{t('sign_up.description')}</Text>
+      <Text style={styles.title}>{t('landing.title')}</Text>
+      <Text style={styles.body}>{t('landing.description')}</Text>
       <View style={styles.spacer} />
       <ActionButton
-        label={t('sign_up.sign_up_button_label')}
-        onPress={signUpPressed}
+        label={t('landing.login_button_label')}
+        onPress={() => toLogin()}
         buttonStyle={primaryButtonStyle.button}
         labelStyle={primaryButtonStyle.label}
       />
       <View style={styles.spacer} />
       <ActionButton
-        label={t('sign_up.login_button_label')}
-        onPress={() => toLogin()}
+        label={t('landing.sign_up_button_label')}
+        onPress={() => toSignUp()}
         buttonStyle={secondaryButtonStyle.button}
         labelStyle={secondaryButtonStyle.label}
       />
@@ -74,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpView;
+export default LandingView;

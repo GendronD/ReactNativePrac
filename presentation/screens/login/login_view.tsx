@@ -7,27 +7,45 @@ import {AuthRepositoryImpl} from '../../../data';
 import {ActionButton} from '../../components';
 import {primaryButtonStyle, secondaryButtonStyle} from '../../../resources';
 import '../../../resources/localization/il8n';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import RootStackParamList from '../../../screen_types';
 
-const LoginView: React.FC = () => {
+type LoginViewProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
+
+export const LoginView: React.FC<LoginViewProps> = props => {
   const authRepository = new AuthRepositoryImpl();
   const authUseCase = new AuthUseCaseImpl(authRepository);
   const loginViewModel = new LoginViewModel(authUseCase);
   const {t} = useTranslation();
 
+  const loginPressed = async () => {
+    try {
+      await loginViewModel.login();
+      props.navigation.navigate('Dashboard');
+    } catch {
+      return;
+    }
+  };
+
+  function toSignUp() {
+    props.navigation.navigate('SignUp');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('login.title')}</Text>
+      <Text style={styles.body}>{t('login.description')}</Text>
       <View style={styles.spacer} />
       <ActionButton
         label={t('login.login_button_label')}
-        onPress={() => loginViewModel.login()}
+        onPress={loginPressed}
         buttonStyle={primaryButtonStyle.button}
         labelStyle={primaryButtonStyle.label}
       />
       <View style={styles.spacer} />
       <ActionButton
         label={t('login.sign_up_button_label')}
-        onPress={() => loginViewModel.login()}
+        onPress={() => toSignUp()}
         buttonStyle={secondaryButtonStyle.button}
         labelStyle={secondaryButtonStyle.label}
       />
@@ -45,6 +63,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+  },
+  body: {
+    fontSize: 16,
+    marginBottom: 8,
   },
   spacer: {
     height: 20,
