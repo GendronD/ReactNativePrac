@@ -21,7 +21,7 @@ export const LoginView: React.FC<LoginViewProps> = props => {
   const loginPressed = async () => {
     try {
       await loginViewModel.login();
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Dashboard');
     } catch {
       return;
     }

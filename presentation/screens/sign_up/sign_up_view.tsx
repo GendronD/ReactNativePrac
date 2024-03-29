@@ -21,7 +21,7 @@ export const SignUpView: React.FC<SignUpViewProps> = props => {
   const signUpPressed = async () => {
     try {
       await signUpViewModel.signUp();
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Dashboard');
     } catch {
       return;
     }

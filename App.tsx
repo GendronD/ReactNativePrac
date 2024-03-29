@@ -6,7 +6,8 @@ import {
   LandingView,
   LoginView,
   SignUpView,
-  HomeView,
+  // HomeView,
+  DashboardView,
 } from './presentation/screens';
 import RootStackParamList from './screen_types';
 
@@ -22,8 +23,8 @@ export default function App() {
             <Stack.Screen name="Login" component={LoginView} />
             <Stack.Screen name="SignUp" component={SignUpView} />
             <Stack.Screen
-              name="Home"
-              component={HomeView}
+              name="Dashboard"
+              component={DashboardView}
               options={{
                 gestureEnabled: false,
                 headerLeft: () => null,
