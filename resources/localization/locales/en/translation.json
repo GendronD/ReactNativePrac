@@ -20,6 +20,9 @@
     "home": {
         "title": "Home"
     },
+    "settings": {
+        "title": "Settings"
+    },
     "toasts": {
         "login_success": "Login Successul",
         "login_failure": "Login Failed"

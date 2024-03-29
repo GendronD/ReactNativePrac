@@ -6,7 +6,6 @@ import {
   LandingView,
   LoginView,
   SignUpView,
-  // HomeView,
   DashboardView,
 } from './presentation/screens';
 import RootStackParamList from './screen_types';

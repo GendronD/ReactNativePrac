@@ -6,7 +6,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 // import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import RootStackParamList from '../../../screen_types';
-import {HomeView} from '..';
+import {HomeView, SettingsView} from '..';
 
 type DashboardViewProps = NativeStackScreenProps<
   RootStackParamList,
@@ -23,6 +23,11 @@ export const DashboardView: React.FC<DashboardViewProps> = () => {
       <Tab.Screen
         name="Home"
         component={HomeView}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsView}
         options={{headerShown: false}}
       />
     </Tab.Navigator>

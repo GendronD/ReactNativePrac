@@ -4,6 +4,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   Dashboard: undefined;
   Home: undefined;
+  Settings: undefined;
 };
 
 export default RootStackParamList;
