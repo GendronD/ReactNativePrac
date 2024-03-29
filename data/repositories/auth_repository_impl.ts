@@ -8,6 +8,14 @@ export class AuthRepositoryImpl implements AuthRepository {
       throw error;
     }
   }
+
+  async signUp(credentials: Credentials): Promise<User> {
+    try {
+      return new User(1, credentials.email, 'First', 'Last');
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default AuthRepositoryImpl;

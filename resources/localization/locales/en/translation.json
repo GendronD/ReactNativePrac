@@ -1,7 +1,20 @@
 {
+    "landing": {
+        "title": "Practice App",
+        "description": "Learning the ins and outs of React Native",
+        "login_button_label": "Login",
+        "sign_up_button_label": "Sign Up"
+    },
     "login": {
         "title": "Practice App",
+        "description": "Login to Practice App",
         "login_button_label": "Login",
+        "sign_up_button_label": "To Sign Up"
+    },
+    "sign_up": {
+        "title": "Practice App",
+        "description": "Sign Up for Practice App",
+        "login_button_label": "To Login",
         "sign_up_button_label": "Sign Up"
     }
 }

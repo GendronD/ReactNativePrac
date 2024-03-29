@@ -15,6 +15,14 @@ export class AuthUseCaseImpl implements AuthUseCase {
       throw error;
     }
   }
+
+  async signUp(credentials: Credentials): Promise<User> {
+    try {
+      return await this.authRepository.signUp(credentials);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default AuthUseCaseImpl;
