@@ -1,5 +1,6 @@
 import {AuthUseCase, Credentials, Email, Password} from '../../../domain';
 import {store, setUser} from '../../../domain';
+import Toast from 'react-native-toast-message';
 
 export class LoginViewModel {
   private authUseCase: AuthUseCase;
@@ -15,11 +16,15 @@ export class LoginViewModel {
       if (this.credentials.isValid()) {
         const user = await this.authUseCase.login(this.credentials);
         store.dispatch(setUser(user));
-        // Show Success Snackbar to UI
-        console.log('login successs');
+        Toast.show({
+          type: 'success',
+          text1: 'Login Successful',
+        });
       } else {
-        // Show Failure Snackbar to UI
-        console.log('login failure');
+        Toast.show({
+          type: 'error',
+          text1: 'Login Failed',
+        });
       }
     } catch (error) {}
   }
