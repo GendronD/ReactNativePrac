@@ -1,24 +1,32 @@
-import {Credentials, Email, Password} from '../../../domain';
+import {AuthUseCase, Credentials, Email, Password} from '../../../domain';
+import {store, setUser} from '../../../domain';
+import Toast from 'react-native-toast-message';
 
-class LoginViewModel {
+export class LoginViewModel {
+  private authUseCase: AuthUseCase;
   credentials: Credentials;
 
-  constructor() {
+  constructor(authUseCase: AuthUseCase) {
+    this.authUseCase = authUseCase;
     this.credentials = new Credentials(new Email(''), new Password(''));
   }
 
-  login(): void {
-    setTimeout(() => {
-      const isValid =
-        this.credentials.email.validate() &&
-        this.credentials.password.validate();
-
-      if (isValid) {
-        console.log('login successs');
+  async login(): Promise<void> {
+    try {
+      if (this.credentials.isValid()) {
+        const user = await this.authUseCase.login(this.credentials);
+        store.dispatch(setUser(user));
+        Toast.show({
+          type: 'success',
+          text1: 'Login Successful',
+        });
       } else {
-        console.log('login failure');
+        Toast.show({
+          type: 'error',
+          text1: 'Login Failed',
+        });
       }
-    }, 2000); // Simulates Network Delay
+    } catch (error) {}
   }
 }
 
